@@ -1,0 +1,41 @@
+﻿using FechaduraEletronica.Borders.Dto;
+using FechaduraEletronica.Borders.Entity;
+using FechaduraEletronica.Borders.Executors.Device;
+using FechaduraEletronica.Borders.Repositories;
+using System;
+using System.Threading.Tasks;
+
+namespace FechaduraEletronica.Executors
+{
+    public class CreateDeviceExecutor : ICreateDeviceExecutor
+    {
+        private readonly IDeviceRepository _deviceRepository;
+        private readonly IClientDeviceRepository _clientDeviceRepository;
+        private readonly IClientRepository _clientRepository;
+
+        public CreateDeviceExecutor(IDeviceRepository deviceRepository, IClientDeviceRepository clientDeviceRepository, IClientRepository clientRepository)
+        {
+            _deviceRepository = deviceRepository;
+            _clientDeviceRepository = clientDeviceRepository;
+            _clientRepository = clientRepository;
+        }
+
+        public async Task<CreateDeviceResponse> Execute(CreateDeviceRequest request)
+        {
+            try
+            {
+                Task<Client> client = _clientRepository.GetClient(request.ClientId);
+                int deviceId = await _deviceRepository.Create(request.Nick);
+                Task<Device> device = _deviceRepository.GetDevice(deviceId);
+
+                await _clientDeviceRepository.Create(await client, await device);
+
+                return new CreateDeviceResponse { DeviceId = deviceId };
+            }
+            catch (Exception ex)
+            {
+                throw new Exception(ex.Message);
+            }
+        }
+    }
+}

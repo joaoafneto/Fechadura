@@ -1,0 +1,67 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31313.79
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FechaduraEletronica.Borders", "FechaduraEletronica.Borders\FechaduraEletronica.Borders.csproj", "{4A5760F4-7544-4CC7-AF54-B840489B0BEB}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8F9F124D-98C3-4850-882F-CB23307CBDAD} = {8F9F124D-98C3-4850-882F-CB23307CBDAD}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FechaduraEletronica.Api", "FechaduraEletronica.Api\FechaduraEletronica.Api.csproj", "{F0A86CA3-0576-47E7-99E6-47DDEB2CBE5D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8F9F124D-98C3-4850-882F-CB23307CBDAD} = {8F9F124D-98C3-4850-882F-CB23307CBDAD}
+		{F4A64D5A-6803-4E74-BA13-13E5D3AD851A} = {F4A64D5A-6803-4E74-BA13-13E5D3AD851A}
+		{BBC762DF-A9DB-4BA3-83D6-5DB108194196} = {BBC762DF-A9DB-4BA3-83D6-5DB108194196}
+		{4A5760F4-7544-4CC7-AF54-B840489B0BEB} = {4A5760F4-7544-4CC7-AF54-B840489B0BEB}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FechaduraEletronica.Executors", "FechaduraEletronica.Executors\FechaduraEletronica.Executors.csproj", "{BBC762DF-A9DB-4BA3-83D6-5DB108194196}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8F9F124D-98C3-4850-882F-CB23307CBDAD} = {8F9F124D-98C3-4850-882F-CB23307CBDAD}
+		{4A5760F4-7544-4CC7-AF54-B840489B0BEB} = {4A5760F4-7544-4CC7-AF54-B840489B0BEB}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FechaduraEletronica.Repositories", "FechaduraEletronica.Repositories\FechaduraEletronica.Repositories.csproj", "{F4A64D5A-6803-4E74-BA13-13E5D3AD851A}"
+	ProjectSection(ProjectDependencies) = postProject
+		{8F9F124D-98C3-4850-882F-CB23307CBDAD} = {8F9F124D-98C3-4850-882F-CB23307CBDAD}
+		{BBC762DF-A9DB-4BA3-83D6-5DB108194196} = {BBC762DF-A9DB-4BA3-83D6-5DB108194196}
+		{4A5760F4-7544-4CC7-AF54-B840489B0BEB} = {4A5760F4-7544-4CC7-AF54-B840489B0BEB}
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FechaduraEletronica.Shared", "FechaduraEletronica.Shared\FechaduraEletronica.Shared.csproj", "{8F9F124D-98C3-4850-882F-CB23307CBDAD}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{4A5760F4-7544-4CC7-AF54-B840489B0BEB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4A5760F4-7544-4CC7-AF54-B840489B0BEB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4A5760F4-7544-4CC7-AF54-B840489B0BEB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4A5760F4-7544-4CC7-AF54-B840489B0BEB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F0A86CA3-0576-47E7-99E6-47DDEB2CBE5D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F0A86CA3-0576-47E7-99E6-47DDEB2CBE5D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F0A86CA3-0576-47E7-99E6-47DDEB2CBE5D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F0A86CA3-0576-47E7-99E6-47DDEB2CBE5D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BBC762DF-A9DB-4BA3-83D6-5DB108194196}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BBC762DF-A9DB-4BA3-83D6-5DB108194196}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BBC762DF-A9DB-4BA3-83D6-5DB108194196}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BBC762DF-A9DB-4BA3-83D6-5DB108194196}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F4A64D5A-6803-4E74-BA13-13E5D3AD851A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F4A64D5A-6803-4E74-BA13-13E5D3AD851A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F4A64D5A-6803-4E74-BA13-13E5D3AD851A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F4A64D5A-6803-4E74-BA13-13E5D3AD851A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F9F124D-98C3-4850-882F-CB23307CBDAD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F9F124D-98C3-4850-882F-CB23307CBDAD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F9F124D-98C3-4850-882F-CB23307CBDAD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F9F124D-98C3-4850-882F-CB23307CBDAD}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {92F5C7D2-5F60-4B80-864B-4DD5A3A24197}
+	EndGlobalSection
+EndGlobal
