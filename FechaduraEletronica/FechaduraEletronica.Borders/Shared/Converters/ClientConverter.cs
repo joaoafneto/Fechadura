@@ -17,7 +17,8 @@ namespace FechaduraEletronica.Borders.Shared.Converters
                 Email = client.email,
                 Name = client.nome,
                 Number = client.numero,
-                UF = client.uf
+                UF = client.uf,
+                ClientId = client.id
             };
         }
     }
