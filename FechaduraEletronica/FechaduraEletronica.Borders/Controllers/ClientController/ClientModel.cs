@@ -12,6 +12,11 @@
         public string Cpf { get; set; }
         public string PostalCode { get; set; }
         public string Password { get; set; }
-        public int ClientId { get; set; }
+        public int ClientId { get; private set; }
+
+        public void SetClientId(int id)
+        {
+            ClientId = id;
+        }
     }
 }

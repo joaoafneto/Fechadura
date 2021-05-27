@@ -30,7 +30,7 @@ namespace FechaduraEletronica.Api.Controllers
         {
             try
             {
-                if (request == null || string.IsNullOrEmpty(request.Password))
+                if (request == null || string.IsNullOrEmpty(request.Password) || string.IsNullOrEmpty(request.Cpf))
                     return BadRequest(JsonConvert.SerializeObject(request));
 
                 CreateClientResponse response = await _createClientExecutor.Execute(new CreateClientRequest { ClientDto = request.ConvertToDto() });

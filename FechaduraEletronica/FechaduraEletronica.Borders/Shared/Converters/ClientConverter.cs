@@ -7,7 +7,7 @@ namespace FechaduraEletronica.Borders.Shared.Converters
     {
         public static ClientModel ToClientModel(this Client client)
         {
-            return new ClientModel
+            ClientModel clientModel = new ClientModel
             {
                 Address = client.logradouro,
                 City = client.cidadde,
@@ -18,8 +18,11 @@ namespace FechaduraEletronica.Borders.Shared.Converters
                 Name = client.nome,
                 Number = client.numero,
                 UF = client.uf,
-                ClientId = client.id
             };
+
+            clientModel.SetClientId(client.id);
+
+            return clientModel;
         }
     }
 }
