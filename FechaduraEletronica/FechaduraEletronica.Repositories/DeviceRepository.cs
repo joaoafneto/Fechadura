@@ -43,11 +43,10 @@ namespace FechaduraEletronica.Repositories
                 d.criado_em, 
                 d.desativado_em, 
                 d.nome 
-            from Cliente c 
+            from Dispositivo d 
             inner join Dispositivo_cliente dc 
-            	on c.id = dc.cliente_id and c.id = @id
-            INNER join Dispositivo d on dc.dispositivo_id = d.id 
-                where LOWER(TRIM(TRAILING ' ' FROM d.nome)) = @nome";
+            	on d.id = dc.dispositivo_id and dc.id = @id
+            where LOWER(TRIM(TRAILING ' ' FROM d.nome)) = @nome";
 
         public async Task<int> Create(string nick)
         {

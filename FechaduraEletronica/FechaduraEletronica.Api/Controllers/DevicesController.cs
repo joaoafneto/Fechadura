@@ -34,7 +34,10 @@ namespace FechaduraEletronica.Api.Controllers
 
                 CreateDeviceResponse response = await _createDeviceExecutor.Execute(new CreateDeviceRequest { ClientId = request.ClientId, Nick = request.Nick });
 
-                return Created(string.Empty, response.DeviceId);
+                if (response != null)
+                    return Created(string.Empty, response.DeviceId);
+
+                return Conflict("Name already exist");
             }
             catch (Exception ex)
             {
