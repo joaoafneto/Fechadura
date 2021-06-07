@@ -7,5 +7,6 @@ namespace FechaduraEletronica.Borders.Repositories
     {
         Task<Device> GetDevice(int deviceId);
         Task<int> Create(string nick);
+        Task<Device> GetDeviceByName(string name, int id);
     }
 }

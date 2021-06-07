@@ -37,6 +37,18 @@ namespace FechaduraEletronica.Repositories
             from Dispositivo d 
                 where d.id = @id";
 
+        private const string SqlGetDeviceByName = @"
+             select 
+                d.id ,
+                d.criado_em, 
+                d.desativado_em, 
+                d.nome 
+            from Cliente c 
+            inner join Dispositivo_cliente dc 
+            	on c.id = dc.cliente_id and c.id = @id
+            INNER join Dispositivo d on dc.dispositivo_id = d.id 
+                where LOWER(TRIM(TRAILING ' ' FROM d.nome)) = @nome";
+
         public async Task<int> Create(string nick)
         {
             using IDbConnection connection = _repositoryHelper.GetConnection();
@@ -51,6 +63,13 @@ namespace FechaduraEletronica.Repositories
             using IDbConnection connection = _repositoryHelper.GetConnection();
 
             return await connection.QueryFirstOrDefaultAsync<Device>(SqlGetDevice, new { id = deviceId });
+        }
+
+        public async Task<Device> GetDeviceByName(string name, int id)
+        {
+            using IDbConnection connection = _repositoryHelper.GetConnection();
+
+            return await connection.QueryFirstOrDefaultAsync<Device>(SqlGetDeviceByName, new { nome = name , id = id});
         }
     }
 }

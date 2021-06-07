@@ -24,13 +24,21 @@ namespace FechaduraEletronica.Executors
         {
             try
             {
-                Task<Client> client = _clientRepository.GetClient(request.ClientId);
-                int deviceId = await _deviceRepository.Create(request.Nick);
-                Task<Device> device = _deviceRepository.GetDevice(deviceId);
+                var deviceExist = await _deviceRepository.GetDeviceByName(request.Nick.Trim().ToLower(), request.ClientId);
 
-                await _clientDeviceRepository.Create(await client, await device);
+                if (deviceExist != null)
+                {
 
-                return new CreateDeviceResponse { DeviceId = deviceId };
+                    Task<Client> client = _clientRepository.GetClient(request.ClientId);
+                    int deviceId = await _deviceRepository.Create(request.Nick);
+                    Task<Device> device = _deviceRepository.GetDevice(deviceId);
+
+                    await _clientDeviceRepository.Create(await client, await device);
+
+                    return new CreateDeviceResponse { DeviceId = deviceId };
+                }
+
+                return null;
             }
             catch (Exception ex)
             {
