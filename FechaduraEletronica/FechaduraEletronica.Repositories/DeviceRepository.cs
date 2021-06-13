@@ -20,10 +20,12 @@ namespace FechaduraEletronica.Repositories
             INSERT INTO fechadura.Dispositivo
                 (criado_em,
                 nome,
+                bluetoothId,
                 desativado_em)
             values
                 (current_timestamp(),
                 @nome,
+                @bluetoothId,
                 NULL);";
 
         private const string SqlGetLastId = @"SELECT LAST_INSERT_ID()";
@@ -33,6 +35,7 @@ namespace FechaduraEletronica.Repositories
                 d.id ,
                 d.criado_em, 
                 d.desativado_em, 
+                bluetoothId,
                 d.nome 
             from Dispositivo d 
                 where d.id = @id";
@@ -41,18 +44,19 @@ namespace FechaduraEletronica.Repositories
              select 
                 d.id ,
                 d.criado_em, 
-                d.desativado_em, 
+                d.desativado_em,
+                bluetoothId, 
                 d.nome 
             from Dispositivo d 
             inner join Dispositivo_cliente dc 
             	on d.id = dc.dispositivo_id and dc.id = @id
             where LOWER(TRIM(TRAILING ' ' FROM d.nome)) = @nome";
 
-        public async Task<int> Create(string nick)
+        public async Task<int> Create(string nick, string bluetoothId)
         {
             using IDbConnection connection = _repositoryHelper.GetConnection();
 
-            await connection.ExecuteAsync(SqlCreateDevice, new { nome = nick });
+            await connection.ExecuteAsync(SqlCreateDevice, new { nome = nick , bluetoothId = bluetoothId });
 
             return await connection.QueryFirstOrDefaultAsync<int>(SqlGetLastId);
         }

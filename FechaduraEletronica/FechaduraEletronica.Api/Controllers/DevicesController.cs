@@ -32,7 +32,7 @@ namespace FechaduraEletronica.Api.Controllers
                 if (request == null)
                     return BadRequest("Request null.");
 
-                CreateDeviceResponse response = await _createDeviceExecutor.Execute(new CreateDeviceRequest { ClientId = request.ClientId, Nick = request.Nick });
+                CreateDeviceResponse response = await _createDeviceExecutor.Execute(new CreateDeviceRequest { ClientId = request.ClientId, Nick = request.Nick,  BluetoothId = request.BluetoothId});
 
                 if (response != null)
                     return Created(string.Empty, response.DeviceId);

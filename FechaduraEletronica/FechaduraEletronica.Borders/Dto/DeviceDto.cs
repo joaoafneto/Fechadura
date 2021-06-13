@@ -8,5 +8,6 @@ namespace FechaduraEletronica.Borders.Dto
         public DateTime CreatedIn { get; set; }
         public DateTime DisabledIn { get; set; }
         public string Nick { get; set; }
+        public string BluetoothId { get; set; }
     }
 }

@@ -28,6 +28,7 @@ namespace FechaduraEletronica.Repositories
                 @cliente_id,
                 current_timestamp())";
 
+
         private const string SqlGet = @"
             SELECT 
                 id, 
