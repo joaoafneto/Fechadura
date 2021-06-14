@@ -26,7 +26,7 @@ namespace FechaduraEletronica.Executors
             {
                 var deviceExist = await _deviceRepository.GetDeviceByName(request.Nick.Trim().ToLower(), request.ClientId);
 
-                if (deviceExist != null)
+                if (deviceExist == null)
                 {
                     Task<Client> client = _clientRepository.GetClient(request.ClientId);
                     int deviceId = await _deviceRepository.Create(request.Nick, request.BluetoothId);
