@@ -13,7 +13,8 @@ namespace FechaduraEletronica.Borders.Shared.Converters
                 CreatedIn = device.criado_em,
                 DisabledIn = device.desativado_em,
                 Id = device.id,
-                Nick = device.nome
+                Nick = device.nome,
+                BluetoothId = device.BluetoothId
             };
         }
 
