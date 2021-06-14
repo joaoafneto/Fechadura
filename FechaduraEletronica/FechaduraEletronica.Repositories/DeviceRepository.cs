@@ -40,7 +40,7 @@ namespace FechaduraEletronica.Repositories
             from Dispositivo d 
                 where d.id = @id";
 
-        private const string SqlGetDeviceByName = @"
+        private const string SqlGetDeviceByBluetoothId = @"
              select 
                 d.id ,
                 d.criado_em, 
@@ -50,13 +50,13 @@ namespace FechaduraEletronica.Repositories
             from Dispositivo d 
             inner join Dispositivo_cliente dc 
             	on d.id = dc.dispositivo_id and dc.id = @id
-            where LOWER(TRIM(TRAILING ' ' FROM d.nome)) = @nome";
+            where LOWER(TRIM(TRAILING ' ' FROM d.bluetoothId)) = @bluetoothId";
 
         public async Task<int> Create(string nick, string bluetoothId)
         {
             using IDbConnection connection = _repositoryHelper.GetConnection();
 
-            await connection.ExecuteAsync(SqlCreateDevice, new { nome = nick , bluetoothId = bluetoothId });
+            await connection.ExecuteAsync(SqlCreateDevice, new { nome = nick, bluetoothId });
 
             return await connection.QueryFirstOrDefaultAsync<int>(SqlGetLastId);
         }
@@ -68,11 +68,11 @@ namespace FechaduraEletronica.Repositories
             return await connection.QueryFirstOrDefaultAsync<Device>(SqlGetDevice, new { id = deviceId });
         }
 
-        public async Task<Device> GetDeviceByName(string name, int id)
+        public async Task<Device> GetDeviceByBluetoothId(string bluetoothId, int id)
         {
             using IDbConnection connection = _repositoryHelper.GetConnection();
 
-            return await connection.QueryFirstOrDefaultAsync<Device>(SqlGetDeviceByName, new { nome = name , id = id});
+            return await connection.QueryFirstOrDefaultAsync<Device>(SqlGetDeviceByBluetoothId, new { id, bluetoothId });
         }
     }
 }

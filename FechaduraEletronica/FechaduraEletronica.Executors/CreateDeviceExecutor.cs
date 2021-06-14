@@ -24,7 +24,7 @@ namespace FechaduraEletronica.Executors
         {
             try
             {
-                var deviceExist = await _deviceRepository.GetDeviceByName(request.Nick.Trim().ToLower(), request.ClientId);
+                var deviceExist = await _deviceRepository.GetDeviceByBluetoothId(request.BluetoothId.Trim().ToLower(), request.ClientId);
 
                 if (deviceExist == null)
                 {
